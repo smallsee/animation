@@ -1,0 +1,36 @@
+ul li {
+  background-color: red; }
+
+.sea0 {
+  position: absolute;
+  clip: rect(0, 25px, 200px, 0px); }
+
+.sea1 {
+  position: absolute;
+  clip: rect(0, 50px, 200px, 25px); }
+
+.sea2 {
+  position: absolute;
+  clip: rect(0, 75px, 200px, 50px); }
+
+.sea3 {
+  position: absolute;
+  clip: rect(0, 100px, 200px, 75px); }
+
+.sea4 {
+  position: absolute;
+  clip: rect(0, 125px, 200px, 100px); }
+
+.sea5 {
+  position: absolute;
+  clip: rect(0, 150px, 200px, 125px); }
+
+.sea6 {
+  position: absolute;
+  clip: rect(0, 175px, 200px, 150px); }
+
+.sea7 {
+  position: absolute;
+  clip: rect(0, 200px, 200px, 175px); }
+
+/*# sourceMappingURL=sass.css.map */

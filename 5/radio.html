@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>旋转</title>
+    <style media="screen">
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .wrap{
+        width: 200px;
+        height: 200px;
+        margin: 50px auto;
+        border: 1px solid black;
+
+        perspective:800px;
+      }
+      .box{
+        width: 200px;
+        height: 200px;
+        position: relative;
+        transition: 2s all;
+        transform-style: preserve-3d;
+              transform: rotateY(0deg);
+              transform-origin: 50% 50% -100px;
+        /*transform: rotateX(10deg);*/
+      }
+
+
+      .box li {
+        width: 25px;
+        height: 200px;
+        list-style: none;
+        font-size: 50px;
+        color: white;
+        text-align: center;
+        line-height: 200px;
+        float: left;
+        position: absolute;
+      }
+      .box li:nth-of-type(1){
+        background-color: blue;
+        -webkit-transform-origin: top;
+        -webkit-transform: rotateX(90deg) translateY(-300px);
+      }
+      .box li:nth-of-type(2){
+        background-color: red;
+        -webkit-transform-origin: bottom;
+        -webkit-transform: rotateX(90deg) translateY(-100px) ;
+      }
+      .box li:nth-of-type(3){
+        background-color: pink;
+        transform: translateZ(-100px);
+
+      }
+      .box li:nth-of-type(4){
+        background-color: green;
+        -webkit-transform: translateZ(-300px) rotateX(180deg);
+      }
+
+      .xiaohai img{
+          height:200px;
+      }
+
+      .sea0 img{
+        position:absolute;
+        clip:rect(0px,25px,200px,0px); left:0
+      }
+
+      .sea1 img{
+        position:absolute;
+        clip:rect(0px,50px,200px,25px); left:-25px
+      }
+
+      .sea2 img{
+        position:absolute;
+        clip:rect(0px,75px,200px,50px); left:-50px
+      }
+
+
+      .sea3 img{
+        position:absolute;
+        clip:rect(0px,100px,200px,75px); left:-75px
+      }
+
+      .sea4 img{
+        position:absolute;
+        clip:rect(0px,125px,200px,100px); left:-100px
+      }
+
+      .sea5 img{
+        position:absolute;
+        clip:rect(0px,150px,200px,125px); left:-125px
+      }
+
+      .sea6 img{
+        position:absolute;
+        clip:rect(0px,175px,200px,150px); left:-150px
+      }
+
+      .sea7 img{
+        position:absolute;
+        clip:rect(0px,200px,200px,175px); left:-175px
+      }
+      .xiaohai{
+        width: 25px;
+        height: 200px;
+        transform-style: preserve-3d;
+        transform: rotateX(0deg) rotateY(0deg) translateZ(100px);
+        transform-origin: 50% 50% -100px;
+        float: left;
+        transition: 2s all;
+      }
+
+      .rotate_sea1{
+            opacity: 0.8;
+            transform: rotateX(-90deg) rotateY(0deg) translateZ(100px);
+      }
+
+      .rotate_sea2{
+            opacity: 0.8;
+            transform: rotateX(-180deg) rotateY(0deg) translateZ(100px);
+      }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul class="box">
+        <div class="xiaohai sea0">
+          <li><img src="2.jpg" ></li>
+          <li><img src="5.jpg" ></li>
+          <li><img src="3.jpg" ></li>
+          <li><img src="7.jpg" ></li>
+        </div>
+      </ul>
+    </div>
+    <button id="btn" type="button" name="button">旋转</button>
+    <button id="btn1" type="button" name="button">删除</button>
+        <button id="btn2" type="button" name="button">旋转2</button>
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+      var l =0
+      var aImg = [];
+      var _width = $('.xiaohai').width();
+      var number = $('.box').width()/_width;
+      var ali = $(".sea0 img");
+      ali.each(function(index,value){
+        var src = $(value).attr('src');
+          aImg[index] = src;
+
+      })
+      for(var i=1;i<number;i++){
+            var Obox = $('<div>').addClass('xiaohai').addClass('sea'+i).appendTo($('.box'));
+
+
+            $.each(aImg,function(k,v){
+              var aLi = $('<li>').appendTo($('.sea'+i));
+              var aimg = $('<img>').attr('src',v).appendTo(aLi);
+            })
+      }
+
+      var Xdeg = '';
+      var Ydeg = '';
+      $('#btn').on('click',function(){
+
+          Xdeg = '-90deg';
+          Ydeg = '0';
+          turn2();
+
+      })
+
+      $('#btn1').on('click',function(){
+        Xdeg = '-180deg'
+        Ydeg = '720deg';
+        turn2();
+
+      })
+
+
+      $('#btn2').on('click',function(){
+        Xdeg = '-270deg'
+        turn2();
+
+      })
+
+
+
+      function turn2(){
+
+          setTimeout(function() {
+            $('.sea'+l).css({
+              'transform' : 'rotateX('+Xdeg+') rotateY('+Ydeg+') translateZ(100px)',
+              'opacity' : '0.8'
+            });
+            $('.box').css({
+              'transform': 'rotateY(360deg)'
+            });
+             l++;
+             if (l<8) {
+               turn2();
+             }else{
+               l=0;
+            }
+
+          }, 150);
+
+      }
+
+
+      // function turn(){
+      //
+      //     setTimeout(function() {
+      //        $('.sea'+l).addClass('rotate_sea1');
+      //        l++;
+      //        if (l<8) {
+      //          turn();
+      //        }else{
+      //          l=0;
+      //        }
+      //     }, 150);
+      //
+      // }
+
+
+
+    </script>
+  </body>
+</html>

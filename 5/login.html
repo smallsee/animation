@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>旋转</title>
+    <style media="screen">
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .wrap{
+        width: 200px;
+        height: 200px;
+        margin: 50px auto;
+        border: 1px solid black;
+        perspective:800px;
+      }
+      .box{
+        width: 200px;
+        height: 200px;
+        position: relative;
+        transform-style: preserve-3d;
+        transform-origin: 50% 50% -100px;
+        /*transform: rotateX(10deg);*/
+      }
+      .xiaohai{
+        width: 25px;
+        height: 200px;
+        transform-style: preserve-3d;
+        transform: rotateX(0deg);
+        transform-origin: 50% 50% -100px;
+        float: left;
+        transition: 1s all;
+      }
+      .rotate_sea{
+        transform: rotateX(360deg);
+      }
+      .box li {
+        width: 25px;
+        height: 200px;
+        list-style: none;
+        font-size: 50px;
+        color: white;
+        text-align: center;
+        line-height: 200px;
+        float: left;
+        position: absolute;
+      }
+      .box li:nth-of-type(1){
+        background-color: blue;
+        -webkit-transform-origin: top;
+        -webkit-transform: rotateX(-90deg);
+      }
+      .box li:nth-of-type(2){
+        background-color: red;
+        -webkit-transform-origin: bottom;
+        -webkit-transform: rotateX(90deg);
+      }
+      .box li:nth-of-type(3){
+        background-color: pink;
+      }
+      .box li:nth-of-type(4){
+        background-color: green;
+        -webkit-transform: translateZ(-200px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul class="box">
+        <div class="xiaohai sea0">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </div>
+      </ul>
+    </div>
+    <button id="btn" type="button" name="button">旋转</button>
+    <button id="btn1" type="button" name="button">删除</button>
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+      var _width = $('.xiaohai').width();
+      var number = $('.box').width()/_width;
+      var liN = $('.xiaohai li');
+      var l =0
+      for(var i=1;i<number;i++){
+            var Obox = $('<div>').addClass('xiaohai').addClass('sea'+i).appendTo($('.box'));
+            for (var k=0;k<4;k++){
+                var aLi = $('<li>').appendTo($('.sea'+i));
+            }
+      }
+
+      $('#btn').on('click',function(){
+
+
+          turn();
+
+      })
+
+      $('#btn1').on('click',function(){
+
+
+          remove();
+
+      })
+
+      function turn(){
+
+          setTimeout(function() {
+             $('.sea'+l).addClass('rotate_sea');
+
+             l++;
+             if (l<8) {
+               turn();
+             }else{
+               l--;
+             }
+          }, 150);
+
+      }
+
+      function remove(){
+
+          setTimeout(function() {
+             $('.sea'+l).removeClass('rotate_sea');
+
+             l--;
+             if (l>-1) {
+               remove();
+             }else{
+               l=0
+             }
+          }, 150);
+
+      }
+
+
+    </script>
+  </body>
+</html>

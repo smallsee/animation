@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+.wrap{
+    width: 200px;
+    height:200px;
+    padding:200px;
+    border: 1px solid #000;
+    perspective: 800px;
+
+}
+.box{
+        width: 200px;
+        height:200px;
+        position: relative;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform-origin: 100px 100px -100px;
+        /*-webkit-transform: rotate3d(1,0.5,0.4,45deg);*/
+        -webkit-transform:translateZ(-100px) rotateY(50deg) rotateX(0deg);
+
+    }
+.box div{
+    width: 200px;
+    height:200px;
+    position: absolute;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    line-height: 200px;
+
+}
+.box div:nth-of-type(1){  background-color: red;  top: -200px;  left: 0px;
+                -webkit-transform-origin: bottom;
+                -webkit-transform: rotateX(90deg);
+                opacity: 0.8;
+}
+.box div:nth-of-type(2){  background-color: blue;  top: 0px;  left: 0px;
+                opacity: 0.8;
+}
+.box div:nth-of-type(3){  background-color: yellow;  top: 0px;  left: -200px;
+                -webkit-transform-origin: right;
+                -webkit-transform: rotateY(-90deg);
+                opacity: 0.8;
+
+}
+.box div:nth-of-type(4){  background-color: green;  top: 0px;  left: 200px;
+                -webkit-transform-origin: left;
+                -webkit-transform: rotateY(90deg);
+                opacity: 0.8;
+
+}
+.box div:nth-of-type(5){  background-color: pink;  top: 200px;  left: 0px;
+                -webkit-transform-origin: top;
+                -webkit-transform: rotateX(-90deg);
+                opacity: 0.8;
+}
+.box div:nth-of-type(6){  background-color: black;  top: 0px;  left: 0px;
+                -webkit-transform: translateZ(-200px) rotateX(180deg);
+                opacity: 0.8;
+
+}
+</style>
+<body>
+    <div class="wrap">
+        <div class="box">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+        </div>
+    </div>
+
+
+</body>
+</html>

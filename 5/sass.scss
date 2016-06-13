@@ -1,0 +1,12 @@
+ul{
+  li{
+    background-color: red;
+  }
+}
+
+@for $i from 0 through  7{
+  .sea#{$i} {
+    position: absolute;
+    clip: rect(0,25*($i+1)+px,200px,25*$i+px);
+  }
+}
